@@ -2,7 +2,7 @@ name: Surveillance des actualités
 
 on:
   schedule:
-    - cron: '*/5 * * * *'  # Exécution toutes les 5 minutes
+    - cron: '*/1 * * * *'  # Exécution toutes les 5 minutes
   workflow_dispatch:  # Exécution manuelle possible
 
 jobs:
