@@ -2,7 +2,7 @@ name: Surveillance des actualités
 
 on:
   schedule:
-    - cron: '10 13 * * *' #UTC time
+    - cron: '30 * * * *'  # À xx:10 UTC (donc xx:11 en Tunisie)
   workflow_dispatch:  # Exécution manuelle possible
 
 jobs:
