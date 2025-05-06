@@ -1,0 +1,49 @@
+name: Surveillance des actualités
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'  # Exécution toutes les 5 minutes
+  workflow_dispatch:  # Exécution manuelle possible
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Étape 1 : Checkout du code source
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Étape 2 : Configuration de Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      # Étape 3 : Installation des dépendances
+      - name: Install dependencies
+        run: npm install
+
+      # Étape 4 : Exécution du script
+      - name: Run the script
+        run: node script-evry.js
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+      # Étape 5 : Commit et push des modifications du fichier evry-actualites.json
+      - name: Commit and push the updated evry-actualites.json file
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          
+          # Ajouter les fichiers modifiés (le fichier evry-actualites.json dans ce cas)
+          git add evry-actualites.json
+          
+          # Vérifier s'il y a des modifications à commiter
+          git diff --cached --exit-code || git commit -m "Mise à jour du fichier evry-actualites.json avec les nouvelles actualités"
+          
+          # Pousser les modifications
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Utilisation du token GitHub Actions pour autoriser les commits

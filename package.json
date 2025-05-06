@@ -1,0 +1,13 @@
+{
+  "name": "surveillance-actualites-evry",
+  "version": "1.0.0",
+  "main": "script-evry.js",
+  "type": "module",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cheerio": "^1.0.0-rc.12"
+  },
+  "scripts": {
+    "start": "node script-evry.js"
+  }
+}
