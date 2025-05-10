@@ -2,8 +2,8 @@ name: Surveillance des actualités
 
 on:
   schedule:
-    # - cron: '30 * * * *'  # À xx:30 UTC (donc xx:30 en Tunisie)
-    - cron: '*/30 * * * *'  # chaque 30 mins
+    - cron: '30 * * * *'  # À xx:30 UTC (donc xx:30 en Tunisie)
+    # - cron: '*/30 * * * *'  # chaque 30 mins
   workflow_dispatch:  # Exécution manuelle possible
 
 jobs:
