@@ -6,7 +6,8 @@ const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN; // Secret GitHub
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID; // Secret GitHub
 
 async function fetchData() {
-  const url = 'https://www.univ-evry.fr/toute-lactualite.html?tx_solr%5Bq%5D=crous#tx-solr-search';
+  // const url = 'https://www.univ-evry.fr/toute-lactualite.html?tx_solr%5Bq%5D=crous#tx-solr-search';
+  const url = 'https://www.univ-evry.fr/toute-lactualite.html';
 
   try {
     const { data } = await axios.get(url);
